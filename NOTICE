@@ -1,0 +1,14 @@
+SCEX Botania / ExtraBotany Compatibility
+Copyright (c) 2026 SCEX
+
+This repository contains the SCEX compatibility bridge and its validation
+harness. It does not contain or redistribute Botania or ExtraBotany dependency
+JARs. Botania, ExtraBotany, Minecraft, NeoForge, and their names and assets
+remain subject to their respective authors' terms.
+
+The bridge targets the public SCEX ExtraBotany repository:
+https://github.com/rianfalltwilight-lab/scex-extrabotany
+
+OpenAI Codex assisted implementation analysis, testing, documentation, public
+source review, and release preparation under maintainer supervision. See
+AI-GENERATED.md for the disclosure boundary.

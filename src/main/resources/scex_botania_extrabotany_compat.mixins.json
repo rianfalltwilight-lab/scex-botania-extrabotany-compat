@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.scex.compat.botania.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "WandOfTheForestItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

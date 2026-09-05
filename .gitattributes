@@ -1,0 +1,4 @@
+# Preserve the byte layout used by the accepted 1.3.0 build on every runner.
+* -text
+# The Windows launcher is not a build input and remains a conventional CRLF file.
+gradlew.bat text eol=crlf

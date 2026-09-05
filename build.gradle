@@ -1,0 +1,90 @@
+plugins {
+    id "java"
+    id "net.neoforged.moddev" version "2.0.141"
+}
+
+group = mod_group
+version = mod_version
+
+base {
+    archivesName = "SCEX-Botania-ExtraBotany-Compat-${minecraft_version}"
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    withSourcesJar()
+}
+
+neoForge {
+    version = neoforge_version
+
+    runs {
+        client {
+            client()
+            systemProperty "scex.compat.clientTest", "true"
+            systemProperty "scex.compat.clientTestWorld", "compat-client-world-scex5-v1"
+        }
+        server {
+            server()
+            programArgument "--nogui"
+        }
+        gameTestServer { type = "gameTestServer" }
+    }
+
+    mods {
+        "${mod_id}" { sourceSet(sourceSets.main) }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = "https://maven.blamejared.com" }
+    exclusiveContent {
+        forRepository { maven { url = "https://maven.theillusivec4.top/" } }
+        filter { includeGroup("top.theillusivec4.curios") }
+    }
+}
+
+dependencies {
+    implementation("vazkii.botania:botania-neoforge-${minecraft_version}:${botania_version}")
+    testImplementation(platform("org.junit:junit-bom:5.11.4"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            minecraft_version: minecraft_version,
+            neoforge_version: neoforge_version,
+            botania_version: botania_version,
+            extrabotany_version: extrabotany_version,
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_version: mod_version
+    ]
+    inputs.properties(replaceProperties)
+    expand(replaceProperties)
+    from("src/main/templates")
+    into(layout.buildDirectory.dir("generated/sources/modMetadata"))
+}
+
+sourceSets.main.resources.srcDir(generateModMetadata)
+neoForge.ideSyncTask(generateModMetadata)
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.release = 21
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
+
+tasks.named("jar", Jar).configure {
+    exclude("dev/scex/compat/botania/testharness/**")
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
