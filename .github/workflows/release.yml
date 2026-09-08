@@ -42,7 +42,7 @@ jobs:
           source_zip="SCEX-Botania-ExtraBotany-Compat-1.21.1-${version}-source.zip"
           cp "build/libs/${runtime}" "${out}/${runtime}"
           cp "build/libs/${sources}" "${out}/${sources}"
-          echo 'c593f0ae2328a52136bae925b3460b6db19b4b761e731092ffa11ba88d34d479  '"${out}/${runtime}" | sha256sum -c -
+          echo '2e08769cea672ec16c3c16f2555d91f357b283ef8faf8ec0520e2c241393c891  '"${out}/${runtime}" | sha256sum -c -
           jar tf "${out}/${runtime}" > "${RUNNER_TEMP}/compat-runtime-entries.txt"
           if grep -q 'testharness' "${RUNNER_TEMP}/compat-runtime-entries.txt"; then
             echo 'Development harness leaked into the runtime JAR.' >&2
@@ -77,7 +77,6 @@ jobs:
           if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
             echo "Release already exists; refusing to overwrite published assets."
             exit 0
-            gh release edit "${GITHUB_REF_NAME}" --prerelease --title 'SCEX Botania / ExtraBotany Compatibility 1.4.0' --notes-file "${notes}"
           else
             gh release create "${GITHUB_REF_NAME}" build/public-release/* --prerelease --title 'SCEX Botania / ExtraBotany Compatibility 1.4.0' --notes-file "${notes}"
           fi
