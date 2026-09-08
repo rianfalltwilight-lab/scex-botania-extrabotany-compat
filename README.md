@@ -1,10 +1,12 @@
 # SCEX Botania / ExtraBotany 森林法杖兼容层
 
+**[1.4.0：直接下载运行 JAR / Download JAR](https://github.com/rianfalltwilight-lab/scex-botania-extrabotany-compat/releases/download/v1.4.0/SCEX-Botania-ExtraBotany-Compat-1.21.1-1.4.0.jar)** · [更新说明 / Release notes](docs/releases/1.4.0.md)
+
 > 这是 Space Creator EX（SCEX）维护的非官方、双端 NeoForge 兼容模组，用于补齐 Botania 456 与 SCEX ExtraBotany 1.21.1 移植版之间的森林法杖绑定行为。
 
 [English](README_en.md)
 
-当前版本为 **1.3.0**。它与 [SCEX ExtraBotany `2.0-scex.5-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany) 是两个独立仓库：ExtraBotany 提供本体移植，本仓库只提供版本锁定的法杖兼容层，两者不互相内置。
+当前版本为 **1.4.0**。它与 [SCEX ExtraBotany `2.0-scex.6-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany) 是两个独立仓库：ExtraBotany 提供本体移植，本仓库只提供版本锁定的法杖兼容层，两者不互相内置。
 
 ## 适配矩阵
 
@@ -13,11 +15,11 @@
 | Minecraft | 1.21.1 |
 | NeoForge | 21.1.248 |
 | Botania | 456-20260822.093314-4（运行时显示 456-SNAPSHOT） |
-| ExtraBotany | [`2.0-scex.5-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany/releases/tag/v2.0-scex.5-dev) |
-| 本兼容层 | 1.3.0 |
+| ExtraBotany | [`2.0-scex.6-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany/releases/tag/v2.0-scex.6-dev) |
+| 本兼容层 | 1.4.0 |
 | Java | 21 |
 
-安装时应在客户端和服务端放入同一份兼容层 JAR，并同时安装上表的 Botania 与 ExtraBotany。不要将 `1.3.0` 与其他 ExtraBotany 版本混用。
+安装时应在客户端和服务端放入同一份兼容层 JAR，并同时安装上表的 Botania 与 ExtraBotany。不要将 `1.4.0` 与其他 ExtraBotany 版本混用。
 
 ## 解决的问题
 
@@ -32,7 +34,7 @@
 - JUnit 契约测试 2/2 通过。
 - 真实客户端交互包的服务端断言 7/7 通过。
 - ExtraBotany 花→发射器、Botania 花→魔力池、魔力池→Manalink 三条绑定在保存、关闭和重开世界后仍保持。
-- 最小专服正常启停，236-JAR SCEX 整包专服新增错误为 0。
+- 本版未重跑 236-JAR 整包专服；该项旧验收只适用于 1.3.0。
 - 发布 JAR 不包含开发专用的物理客户端探针。
 
 详细边界与哈希见 [VALIDATION.md](VALIDATION.md)。

@@ -1,3 +1,5 @@
+Current 1.4.0 evidence and scope: [release notes](docs/releases/1.4.0.md). The report below is historical 1.3.0 evidence.
+
 # SCEX Botania / ExtraBotany compatibility 1.3.0 validation
 
 Validated on 2026-09-05 (Asia/Shanghai) against Minecraft 1.21.1,

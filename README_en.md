@@ -1,10 +1,12 @@
 # SCEX Botania / ExtraBotany Forest-Wand Compatibility
 
+**[1.4.0：直接下载运行 JAR / Download JAR](https://github.com/rianfalltwilight-lab/scex-botania-extrabotany-compat/releases/download/v1.4.0/SCEX-Botania-ExtraBotany-Compat-1.21.1-1.4.0.jar)** · [更新说明 / Release notes](docs/releases/1.4.0.md)
+
 > An unofficial BOTH-side NeoForge compatibility mod maintained by Space Creator EX (SCEX). It restores forest-wand binding behavior between Botania 456 and the SCEX ExtraBotany 1.21.1 port.
 
 [Chinese](README.md)
 
-The current version is **1.3.0**. This repository and [SCEX ExtraBotany `2.0-scex.5-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany) are separate projects: ExtraBotany provides the main port, while this repository provides a version-locked interaction bridge. Neither project bundles the other.
+The current version is **1.4.0**. This repository and [SCEX ExtraBotany `2.0-scex.6-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany) are separate projects: ExtraBotany provides the main port, while this repository provides a version-locked interaction bridge. Neither project bundles the other.
 
 ## Compatibility matrix
 
@@ -13,11 +15,11 @@ The current version is **1.3.0**. This repository and [SCEX ExtraBotany `2.0-sce
 | Minecraft | 1.21.1 |
 | NeoForge | 21.1.248 |
 | Botania | 456-20260822.093314-4 (reports 456-SNAPSHOT at runtime) |
-| ExtraBotany | [`2.0-scex.5-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany/releases/tag/v2.0-scex.5-dev) |
-| This bridge | 1.3.0 |
+| ExtraBotany | [`2.0-scex.6-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany/releases/tag/v2.0-scex.6-dev) |
+| This bridge | 1.4.0 |
 | Java | 21 |
 
-Install the same compatibility JAR on client and server alongside the exact Botania and ExtraBotany versions above. Do not pair compatibility 1.3.0 with another ExtraBotany build.
+Install the same compatibility JAR on client and server alongside the exact Botania and ExtraBotany versions above. Do not pair compatibility 1.4.0 with another ExtraBotany build.
 
 ## What it fixes
 
@@ -27,12 +29,12 @@ Install the same compatibility JAR on client and server alongside the exact Bota
 
 Keeping this bridge separate prevents SCEX-pack-specific interaction patches from being mixed into the main ExtraBotany port. The bridge depends on the current ExtraBotany wand-selection and Manalink method signatures; every ExtraBotany update therefore requires a rebuild and renewed interaction, save/reload, and dedicated-server validation.
 
-## Validation summary
+## Validation summary (see current release notes for scope)
 
 - 2/2 JUnit contract tests passed.
 - 7/7 server assertions driven by real client interaction packets passed.
 - ExtraBotany flower→spreader, Botania flower→pool, and pool→Manalink bindings all survived save, close, and reopen.
-- The minimal dedicated server stopped cleanly; the 236-JAR SCEX server test introduced zero new errors.
+- The 236-JAR server result belongs to 1.3.0; that full-pack test was not repeated for 1.4.0.
 - The release JAR contains no development-only physical-client harness classes.
 
 See [VALIDATION.md](VALIDATION.md) for scope and hashes.

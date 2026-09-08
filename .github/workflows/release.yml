@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           version="${GITHUB_REF_NAME#v}"
-          test "${version}" = '1.3.0'
+          test "${version}" = '1.4.0'
           out='build/public-release'
           mkdir -p "${out}"
           runtime="SCEX-Botania-ExtraBotany-Compat-1.21.1-${version}.jar"
@@ -58,13 +58,13 @@ jobs:
             --arg sources_sha "${sources_sha}" \
             --arg source_sha "${source_sha}" \
             --arg commit "${GITHUB_SHA}" \
-            '{version:$version,status:"unofficial SCEX compatibility preview",minecraft:"1.21.1",neoforge:"21.1.248",botania:"456-20260822.093314-4",extrabotany:"2.0-scex.5-dev",commit:$commit,validation:{unitTests:"2/2",physicalClientAssertions:"7/7",fullPackNewErrors:0},sha256:{runtime:$runtime_sha,sourcesJar:$sources_sha,sourceZip:$source_sha},aiAssisted:true}' \
+            '{version:$version,status:"unofficial SCEX compatibility preview",minecraft:"1.21.1",neoforge:"21.1.248",botania:"456-20260822.093314-4",extrabotany:"2.0-scex.6-dev",commit:$commit,validation:{unitTests:"2/2",physicalClientAssertions:"7/7",fullPackRetested:false},sha256:{runtime:$runtime_sha,sourcesJar:$sources_sha,sourceZip:$source_sha},aiAssisted:true}' \
             > "${out}/SCEX-Botania-ExtraBotany-Compat-${version}-release-manifest.json"
           (cd "${out}" && sha256sum "${runtime}" "${sources}" "${source_zip}" "SCEX-Botania-ExtraBotany-Compat-${version}-release-manifest.json" > "SCEX-Botania-ExtraBotany-Compat-${version}-SHA256SUMS.txt")
       - name: Preserve release bundle
         uses: actions/upload-artifact@v6
         with:
-          name: scex-botania-extrabotany-compat-1.3.0-release
+          name: scex-botania-extrabotany-compat-1.4.0-release
           path: build/public-release/*
           if-no-files-found: error
       - name: Publish GitHub prerelease
@@ -73,10 +73,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          notes='docs/releases/1.3.0.md'
+          notes='docs/releases/1.4.0.md'
           if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
-            gh release upload "${GITHUB_REF_NAME}" build/public-release/* --clobber
-            gh release edit "${GITHUB_REF_NAME}" --prerelease --title 'SCEX Botania / ExtraBotany Compatibility 1.3.0' --notes-file "${notes}"
+            echo "Release already exists; refusing to overwrite published assets."
+            exit 0
+            gh release edit "${GITHUB_REF_NAME}" --prerelease --title 'SCEX Botania / ExtraBotany Compatibility 1.4.0' --notes-file "${notes}"
           else
-            gh release create "${GITHUB_REF_NAME}" build/public-release/* --prerelease --title 'SCEX Botania / ExtraBotany Compatibility 1.3.0' --notes-file "${notes}"
+            gh release create "${GITHUB_REF_NAME}" build/public-release/* --prerelease --title 'SCEX Botania / ExtraBotany Compatibility 1.4.0' --notes-file "${notes}"
           fi
