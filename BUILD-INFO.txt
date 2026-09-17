@@ -1,0 +1,7 @@
+Project=scex-botania-extrabotany-compat
+Mod-Version=1.4.2
+Minecraft=1.21.1
+Java=21
+Frozen-Runtime-SHA256=f3a3ea176ff80d9e3973210e6564ff4ead2c02609aa060159a9ee0741f0ee3ae
+Packaging=Frozen code and game resources with public legal records
+Validation=See docs/releases/1.4.2.md; not full-pack acceptance

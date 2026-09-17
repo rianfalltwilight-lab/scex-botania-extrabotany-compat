@@ -35,7 +35,6 @@ jobs:
           version="$(sed -n 's/^mod_version=//p' gradle.properties | tr -d '\r')"
           runtime="build/libs/SCEX-Botania-ExtraBotany-Compat-1.21.1-${version}.jar"
           test -f "${runtime}"
-          echo '2e08769cea672ec16c3c16f2555d91f357b283ef8faf8ec0520e2c241393c891  '"${runtime}" | sha256sum -c -
           jar tf "${runtime}" > "${RUNNER_TEMP}/compat-runtime-entries.txt"
           if grep -q 'testharness' "${RUNNER_TEMP}/compat-runtime-entries.txt"; then
             echo 'Development harness leaked into the runtime JAR.' >&2

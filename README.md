@@ -1,25 +1,26 @@
 # SCEX Botania / ExtraBotany 森林法杖兼容层
 
-**[1.4.0：直接下载运行 JAR / Download JAR](https://github.com/rianfalltwilight-lab/scex-botania-extrabotany-compat/releases/download/v1.4.0/SCEX-Botania-ExtraBotany-Compat-1.21.1-1.4.0.jar)** · [更新说明 / Release notes](docs/releases/1.4.0.md)
+最新冻结交付与验证边界 / Current frozen delivery: [release notes](docs/releases/1.4.2.md).
+**[1.4.2：直接下载运行 JAR / Download JAR](https://github.com/rianfalltwilight-lab/scex-botania-extrabotany-compat/releases/download/v1.4.2/SCEX-Botania-ExtraBotany-Compat-1.21.1-1.4.2.jar)** · [更新说明 / Release notes](docs/releases/1.4.2.md)
 
 > 这是 Space Creator EX（SCEX）维护的非官方、双端 NeoForge 兼容模组，用于补齐 Botania 456 与 SCEX ExtraBotany 1.21.1 移植版之间的森林法杖绑定行为。
 
 [English](README_en.md)
 
-当前版本为 **1.4.0**。它与 [SCEX ExtraBotany `2.0-scex.6-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany) 是两个独立仓库：ExtraBotany 提供本体移植，本仓库只提供版本锁定的法杖兼容层，两者不互相内置。
+当前版本为 **1.4.2**。它与 [SCEX ExtraBotany `2.0-scex.8-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany) 是两个独立仓库：ExtraBotany 提供本体移植，本仓库只提供法杖交互兼容层，两者不互相内置。
 
 ## 适配矩阵
 
-| 组件 | 精确版本 |
+| 组件 | 已验证版本 |
 | --- | --- |
 | Minecraft | 1.21.1 |
 | NeoForge | 21.1.248 |
 | Botania | 456-20260822.093314-4（运行时显示 456-SNAPSHOT） |
-| ExtraBotany | [`2.0-scex.6-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany/releases/tag/v2.0-scex.6-dev) |
-| 本兼容层 | 1.4.0 |
+| ExtraBotany | [`2.0-scex.8-dev`](https://github.com/rianfalltwilight-lab/scex-extrabotany/releases/tag/v2.0-scex.8-dev) |
+| 本兼容层 | 1.4.2 |
 | Java | 21 |
 
-安装时应在客户端和服务端放入同一份兼容层 JAR，并同时安装上表的 Botania 与 ExtraBotany。不要将 `1.4.0` 与其他 ExtraBotany 版本混用。
+安装时应在客户端和服务端放入同一份兼容层 JAR，并同时安装上表的 Botania 与 ExtraBotany。元数据声明 ExtraBotany `[2.0-scex.7-dev,3)`、Botania `[456-SNAPSHOT,457)`、NeoForge `[21.1.248,)`；构建锁定用于复现，其他组合未逐项验证。
 
 ## 解决的问题
 
@@ -29,7 +30,7 @@
 
 将兼容层保持为独立模组，可以避免将 SCEX 整合包特定的交互补丁混入 ExtraBotany 本体移植。该层依赖 ExtraBotany 当前的法杖选择和 Manalink 方法签名；ExtraBotany 升级时必须重新编译并重跑交互、保存重载和专服验收。
 
-## 验证摘要
+## 历史验证摘要（1.4.0）
 
 - JUnit 契约测试 2/2 通过。
 - 真实客户端交互包的服务端断言 7/7 通过。

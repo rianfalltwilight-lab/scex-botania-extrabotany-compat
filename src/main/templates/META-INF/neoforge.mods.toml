@@ -36,6 +36,6 @@ side="BOTH"
 [[dependencies."${mod_id}"]]
 modId="extrabotany"
 type="required"
-versionRange="[${extrabotany_version}]"
+versionRange="[2.0-scex.7-dev,3)"
 ordering="AFTER"
 side="BOTH"
